@@ -37,14 +37,14 @@ class TodoList extends React.Component {
   };
 
   submitHandler = event => {
-      event.preventDefault();
-      let newTodo = {
-          task: this.state.task,
-          id: this.state.id,
-          completed: false
-      };
-      this.setState({ stateTodo: [...this.state.stateTodo, newTodo]});
-  }
+    event.preventDefault();
+    let newTodo = {
+      task: this.state.task,
+      id: this.state.id,
+      completed: false
+    };
+    this.setState({ stateTodo: [...this.state.stateTodo, newTodo] });
+  };
 
   render() {
     return (
@@ -62,8 +62,8 @@ class TodoList extends React.Component {
             onChange={this.inputChangeHandler}
             placeholder="Whatcha wanna do..."
           />
-          <button type='submit'>Add Todo</button>
-          <button type='submit'>Think you're done?!</button>
+          <button type="submit">Add Todo</button>
+          <button type="submit">Think you're done?!</button>
         </form>
       </div>
     );

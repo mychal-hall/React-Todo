@@ -1,7 +1,6 @@
-import React from 'react';
-import TodoList from './components/TodoComponents/TodoList';
-import './components/TodoComponents/Todo.css'
-
+import React from "react";
+import TodoList from "./components/TodoComponents/TodoList";
+import "./components/TodoComponents/Todo.css";
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
