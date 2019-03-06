@@ -32,20 +32,38 @@ class TodoList extends React.Component {
     };
   }
 
+  inputChangeHandler = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  submitHandler = event => {
+      event.preventDefault();
+      let newTodo = {
+          task: this.state.task,
+          id: this.state.id,
+          completed: false
+      };
+      this.setState({ stateTodo: [...this.state.stateTodo, newTodo]});
+  }
+
   render() {
     return (
       <div>
         <h1>Things you won't do -</h1>
         <div>
           {this.state.stateTodo.map(todo => (
-            <Todo
-              task={todo.task}
-              key={todo.id}
-            />
+            <Todo task={todo.task} key={todo.id} />
           ))}
         </div>
-        <form>
-            <
+        <form onSubmit={this.submitHandler}>
+          <input
+            name="task"
+            value={this.state.task}
+            onChange={this.inputChangeHandler}
+            placeholder="Whatcha wanna do..."
+          />
+          <button type='submit'>Add Todo</button>
+          <button type='submit'>Think you're done?!</button>
         </form>
       </div>
     );
