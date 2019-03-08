@@ -60,6 +60,7 @@ class App extends React.Component {
         todos: prevState.todos.map(taskItem => {
           if (taskItem.id === taskId) {
             return {
+              task: taskItem.task,
               id: taskItem.id,
               completed: !taskItem.completed
             };

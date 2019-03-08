@@ -6,7 +6,7 @@ export default function Todo(props) {
     <div
     className={`task ${completed}`}
     key={props.todo.id}
-    onClick={event => {
+    onClick={() => {
       props.toggleComplete(props.todo.id);
     }}
     >
