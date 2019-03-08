@@ -1,24 +1,49 @@
 import React from "react";
 
-
 import TodoList from "./components/TodoComponents/TodoList";
 import "./components/TodoComponents/Todo.css";
 import TodoForm from "./components/TodoComponents/TodoForm";
+import "./app.css";
 
 const todos = [
   {
-    task: "Check the EPS relays",
+    task: "CHECK THE EPS RELAYS",
     id: 1,
     completed: false
   },
   {
-    task: "Adjust inertial dampeners",
+    task: "ADJUST INERTIAL DAMPENERS",
     id: 2,
     completed: false
   },
   {
-    task: "Restart the warp core",
+    task: "RESTART THE WARP CORE",
     id: 3,
+    completed: false
+  },
+  {
+    task: "REMODULATE SHIELDS",
+    id: 4,
+    completed: false
+  },
+  {
+    task: "REALIGN THE MAIN DEFLECTOR",
+    id: 5,
+    completed: false
+  },
+  {
+    task: "FIND THE PORT NACELLE",
+    id: 6,
+    completed: false
+  },
+  {
+    task: "INSTALL WINDOWS 95",
+    id: 7,
+    completed: false
+  },
+  {
+    task: "FIND VOYAGER",
+    id: 8,
     completed: false
   }
 ];
@@ -84,22 +109,25 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="header">
-          <h1>Things to do</h1>
+      <div className="app-container">
+        <h2>LCARS</h2>
+        <div className="app-content">
+          <div className="header">
+            <h1>MAINTENANCE REQUESTS</h1>
+          </div>
+          <TodoList
+            todos={this.state.todos}
+            toggleComplete={this.toggleComplete}
+          />
+          <TodoForm
+            task={this.state.task}
+            inputChangeHandler={this.inputChangeHandler}
+            submitHandler={this.submitHandler}
+          />
+          <button className="remove-button" onClick={this.removeCompleted}>
+            REMOVE COMPLETED
+          </button>
         </div>
-        <TodoList
-          todos={this.state.todos}
-          toggleComplete={this.toggleComplete}
-        />
-        <TodoForm
-          task={this.state.task}
-          inputChangeHandler={this.inputChangeHandler}
-          submitHandler={this.submitHandler}
-        />
-        <button onClick={this.removeCompleted} className="clearButton">
-          Remove Completed
-        </button>
       </div>
     );
   }

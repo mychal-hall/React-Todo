@@ -6,14 +6,14 @@ import Todo from "./Todo";
 
 export default function TodoList(props) {
   return (
-    <div>
-        {props.todos.map(todo => (
-          <Todo todo={todo} toggleComplete={props.toggleComplete} />
-        ))}
-        </div>
+    <div className="task-list">
+      {props.todos.map(todo => (
+        <Todo todo={todo} toggleComplete={props.toggleComplete} />
+      ))}
+    </div>
   );
 }
- /* const todos = [
+/* const todos = [
    { */
 //     task: "Testomo",
 //     id: Date.now(),
@@ -57,13 +57,13 @@ export default function TodoList(props) {
 //   };
 
 //   render() {
-    // return (
-    //   <div>
-    //     <h1>Things you won't do -</h1>
-    //     <div>
-    //       {this.state.todos.map(todo => (
-    //         <Todo task={todo.task} key={todo.id} />
-    //       ))}
+// return (
+//   <div>
+//     <h1>Things you won't do -</h1>
+//     <div>
+//       {this.state.todos.map(todo => (
+//         <Todo task={todo.task} key={todo.id} />
+//       ))}
 //         </div>
 //         <form onSubmit={this.submitHandler}>
 //           <input

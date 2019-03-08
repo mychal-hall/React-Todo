@@ -7,14 +7,17 @@ export default class TodoForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.props.submitHandler}>
+      <form className="form" onSubmit={this.props.submitHandler}>
         <input
+          className="input"
           name="task"
           value={this.props.task}
           onChange={this.props.inputChangeHandler}
-          placeholder="Whatcha wanna do..."
+          placeholder="INPUT REQUEST"
         />
-        <button type="submit">Add Todo</button>
+        <button className="add-button" type="submit">
+          ADD REQUEST
+        </button>
       </form>
     );
   }

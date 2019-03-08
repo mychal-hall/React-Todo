@@ -10,7 +10,7 @@ export default function Todo(props) {
       props.toggleComplete(props.todo.id);
     }}
     >
-      <p>{props.todo.task}</p>
+      <p className="task-text">{props.todo.task}</p>
     </div>
   );
 }
