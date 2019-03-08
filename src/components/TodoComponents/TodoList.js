@@ -7,8 +7,8 @@ import Todo from "./Todo";
 export default function TodoList(props) {
   return (
     <div>
-        {props.stateTodo.map(todo => (
-          <Todo task={todo.task} key={todo.id} toggleComplete={props.toggleComplete} />
+        {props.todos.map(todo => (
+          <Todo todo={todo} toggleComplete={props.toggleComplete} />
         ))}
         </div>
   );
@@ -35,7 +35,7 @@ export default function TodoList(props) {
 //   constructor() {
 //     super();
 //     this.state = {
-//       stateTodo: todos,
+//      .todos: todos,
 //       task: "",
 //       id: Date.now(),
 //       completed: false
@@ -53,7 +53,7 @@ export default function TodoList(props) {
 //       id: this.state.id,
 //       completed: false
 //     };
-//     this.setState({ stateTodo: [...this.state.stateTodo, newTodo] });
+//     this.setState({.todos: [...this.state.todos, newTodo] });
 //   };
 
 //   render() {
@@ -61,7 +61,7 @@ export default function TodoList(props) {
     //   <div>
     //     <h1>Things you won't do -</h1>
     //     <div>
-    //       {this.state.stateTodo.map(todo => (
+    //       {this.state.todos.map(todo => (
     //         <Todo task={todo.task} key={todo.id} />
     //       ))}
 //         </div>

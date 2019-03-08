@@ -1,4 +1,6 @@
 import React from "react";
+
+
 import TodoList from "./components/TodoComponents/TodoList";
 import "./components/TodoComponents/Todo.css";
 import TodoForm from "./components/TodoComponents/TodoForm";
@@ -25,9 +27,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      stateTodo: todos,
+      todos: todos,
       task: "",
-      id: Date.now(),
+      id: Date.now()
     };
   }
 
@@ -37,41 +39,48 @@ class App extends React.Component {
 
   submitHandler = event => {
     event.preventDefault();
-    let newTodo = {
-      task: this.state.task,
-      id: this.state.id,
-      completed: false
-    };
-    this.setState({ stateTodo: [...this.state.stateTodo, newTodo] });
+    this.setState(prevState => {
+      return {
+        todos: [
+          ...prevState.todos,
+          {
+            completed: false,
+            id: Date.now(),
+            task: prevState.task
+          }
+        ],
+        task: ""
+      };
+    });
   };
 
   toggleComplete = taskId => {
     this.setState(prevState => {
       return {
-        todos: prevState.stateTodo.map(task => {
-          if (task.id === taskId) {
+        todos: prevState.todos.map(taskItem => {
+          if (taskItem.id === taskId) {
             return {
-              task: task.task,
-              id: task.id,
-              completed: !task.completed
+              id: taskItem.id,
+              completed: !taskItem.completed
             };
           } else {
-            return task;
+            return taskItem;
           }
-        })
-      }
-    })
-  }
-
-  removeCompleted = event => {
-    this.setState(prevState => {
-      return {
-        todos: prevState.todos.filter(task => {
-          return !task.completed;
         })
       };
     });
   };
+
+  removeCompleted = event => {
+    this.setState(prevState => {
+      return {
+        todos: prevState.todos.filter(taskItem => {
+          return !taskItem.completed;
+        })
+      };
+    });
+  };
+
   render() {
     return (
       <div>
@@ -79,7 +88,7 @@ class App extends React.Component {
           <h1>Things to do</h1>
         </div>
         <TodoList
-          stateTodo={this.state.stateTodo}
+          todos={this.state.todos}
           toggleComplete={this.toggleComplete}
         />
         <TodoForm
@@ -87,10 +96,7 @@ class App extends React.Component {
           inputChangeHandler={this.inputChangeHandler}
           submitHandler={this.submitHandler}
         />
-        <button
-          onClick={this.removeCompleted}
-          className="clearButton"
-        >
+        <button onClick={this.removeCompleted} className="clearButton">
           Remove Completed
         </button>
       </div>
